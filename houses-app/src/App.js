@@ -24,4 +24,58 @@ export default class App extends React.Component {
       </div>
     );
   }
+
+  componentDidMount() {
+    fetch(HOUSES_ENDPOINT)
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        houses: data
+      });
+    });
+  }
+
+  deleteRoom(e, house, room) {
+    const index = house.rooms.indexOf(room);
+    house.rooms.splice(index, 1);
+    updateHouse(house)
+    .then(() => {
+    this.setState(state => {
+      for ( let h of state.houses) {
+        if(h._id === house._id) {
+          let h = house;
+          break;
+        }
+      }
+      return state;
+    });
+    });
+  }
+
+  addRoom(e, house, room) {
+    house.rooms.push(room)
+    updateHouse(house)
+    .then(() => {
+    this.setState(state => {
+      for ( let h of state.houses) {
+        if(h._id === house._id) {
+          let h = house;
+          break;
+        }
+      }
+      return state;
+    });
+    });
+    e.preventDefault();
+  }
+}
+
+function updateHouse(house) {
+  return fetch(`${HOUSES_ENDPOINT}/${house._id}`,{
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(house)
+  });
 }
