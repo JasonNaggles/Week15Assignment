@@ -18,5 +18,10 @@ export default class App extends React.Component {
       addNewRoom={this.addNewRoom}
       deleteRoom={this.deleteRoom} />)
     : null;
+    return (
+      <div>
+        {houses}
+      </div>
+    );
   }
 }
