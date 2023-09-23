@@ -9,5 +9,14 @@ export default class App extends React.Component {
         this.addNewRoom = this.addNewRoom.bind(this);
         this.deleteRoom = this.deleteRoom.bind(this);
   }
-
+  render() {
+    const houses = this.state
+    ? this.state.houses.map((house, index) => 
+    <House
+      key={index}
+      data={house}
+      addNewRoom={this.addNewRoom}
+      deleteRoom={this.deleteRoom} />)
+    : null;
+  }
 }
