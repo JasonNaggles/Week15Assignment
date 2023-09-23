@@ -54,7 +54,7 @@ export default class App extends React.Component {
     e.preventDefault();
   }
 
-  addRoom(e, house, room) {
+  addNewRoom(e, house, room) {
     house.rooms.push(room)
     updateHouse(house)
     .then(() => {
