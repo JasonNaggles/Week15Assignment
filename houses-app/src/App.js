@@ -51,6 +51,7 @@ export default class App extends React.Component {
       return state;
     });
     });
+    e.preventDefault();
   }
 
   addRoom(e, house, room) {
