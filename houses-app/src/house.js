@@ -1,5 +1,5 @@
 import React from 'react';
-
+import NewRoomForm from './new-room-form';
 
 export default class House extends React.Component {
   render() {
