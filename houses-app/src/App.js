@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import House from './house';
 
-const HOUSES_ENDPOINT = 'https://ancient.taiga-31359.herokuapp.com/api/houses';
+const API_URL = 'https://650cf06147af3fd22f680f95.mockapi.io/Houses_API/houses';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch(HOUSES_ENDPOINT)
+    fetch(API_URL)
     .then(response => response.json())
     .then(data => {
       this.setState({
