@@ -26,6 +26,10 @@ export default class App extends React.Component {
     );
   }
 
+  componentWillMount() {
+    
+  }
+
   componentDidMount() {
     fetch(API_URL)
     .then(response => response.json())
@@ -73,7 +77,7 @@ export default class App extends React.Component {
 }
 
 function updateHouse(house) {
-  return fetch(`${HOUSES_ENDPOINT}/${house._id}`,{
+  return fetch(`${API_URL}/${house._id}`,{
     method: 'PUT',
     headers: {
       'content-type': 'application/json'
