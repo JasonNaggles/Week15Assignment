@@ -26,10 +26,6 @@ export default class App extends React.Component {
     );
   }
 
-  componentWillMount() {
-
-  }
-
   componentDidMount() {
     fetch(HOUSE_ENDPOINT)
     .then(response => response.json())
