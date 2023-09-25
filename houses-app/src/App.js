@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import House from './house';
 
-const API_URL = 'https://650cf06147af3fd22f680f95.mockapi.io/Houses_API/houses';
+const HOUSE_ENDPOINT = 'https://ancient.taiga-31359.herokuapp.com/api/houses';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -27,11 +27,11 @@ export default class App extends React.Component {
   }
 
   componentWillMount() {
-    
+
   }
 
   componentDidMount() {
-    fetch(API_URL)
+    fetch(HOUSE_ENDPOINT)
     .then(response => response.json())
     .then(data => {
       this.setState({
@@ -77,7 +77,7 @@ export default class App extends React.Component {
 }
 
 function updateHouse(house) {
-  return fetch(`${API_URL}/${house._id}`,{
+  return fetch(`${HOUSE_ENDPOINT}/${house._id}`,{
     method: 'PUT',
     headers: {
       'content-type': 'application/json'
