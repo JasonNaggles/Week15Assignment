@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import House from './house';
 
-const HOUSE_ENDPOINT = 'https://ancient.taiga-31359.herokuapp.com/api/houses';
+const HOUSE_ENDPOINT = 'https://ancient-taiga-31359.herokuapp.com/api/houses';
 
 export default class App extends React.Component {
   constructor(props) {
