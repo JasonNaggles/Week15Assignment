@@ -24,10 +24,6 @@ export default class NewRoomForm extends React.Component {
         this.props.addNewRoom(e, this.props.data,
             {name: this.state.nameValue, area: this.state.areaValue});
             this.setState({nameValue: '', areaValue: ''});
-
-        this.props.editRoom(e, this.props.data,
-            {name: this.state.nameValue, area: this.state.areaValue});
-            this.setState({nameValue: '', areaValue: ''});
     }
 
     render() {
@@ -36,7 +32,6 @@ export default class NewRoomForm extends React.Component {
                 <input type = "text" placeholder="Name" onChange={this.handleNameChange} value={this.state.nameValue} />
                 <input type = "text" placeholder="Area" onChange={this.handleAreaChange} value={this.state.areaValue} />
                 <button onClick={this.handleClick}>Add Room</button>
-                <button onClick={this.handleClick}>Edit Room</button>
             </div>
                 
             

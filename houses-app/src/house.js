@@ -8,10 +8,6 @@ export default class House extends React.Component {
     <li key = {index}>
         {room.name} Area: {room.area}
         <button onClick={e => 
-         this.props.editRoom(e, this.props.data, room)}>
-        Edit
-         </button>
-        <button onClick={e => 
          this.props.deleteRoom(e, this.props.data, room)}>
         Delete
          </button>
