@@ -9,6 +9,7 @@ export default class App extends React.Component {
         super(props);
         this.addNewRoom = this.addNewRoom.bind(this);
         this.deleteRoom = this.deleteRoom.bind(this);
+        this.editRoom = this.editRoom.bind(this);
   }
   render() {
     const houses = this.state
@@ -17,7 +18,9 @@ export default class App extends React.Component {
       key={index}
       data={house}
       addNewRoom={this.addNewRoom}
-      deleteRoom={this.deleteRoom} />)
+      deleteRoom={this.deleteRoom} 
+      editRoom={this.editRoom}
+      />)
     : null;
     return (
       <div>
@@ -70,7 +73,44 @@ export default class App extends React.Component {
     });
     e.preventDefault();
   }
+  
+  editRoom(e, house, updatedRoom) {
+    // Find the index of the room to be updated in the house's rooms array.
+    const roomIndex = house.rooms.findIndex((room) => room.id === updatedRoom.id);
+  
+    // If the room was found, update it with the new data.
+    if (roomIndex !== -1) {
+      house.rooms[roomIndex] = updatedRoom;
+  
+      // Send a PUT request to update the house's data on the server.
+      updateHouse(house)
+        .then(() => {
+          this.setState((state) => {
+            // Find the house in the state and update it.
+            const updatedHouses = state.houses.map((h) => {
+              if (h._id === house._id) {
+                return house;
+              } else {
+                return h;
+              }
+            });
+          
+            return {
+              houses: updatedHouses,
+            };
+          });
+        });
+      
+      };
+  
+  
+    e.preventDefault();
+    
+  }
 }
+
+
+
 
 function updateHouse(house) {
   return fetch(`${HOUSE_ENDPOINT}/${house._id}`,{
