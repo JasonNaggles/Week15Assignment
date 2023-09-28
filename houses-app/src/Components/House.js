@@ -11,4 +11,4 @@ export const House = (props) => {
         };
         updateHouse(updateHouse);
     }
-}
+};
