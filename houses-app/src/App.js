@@ -76,7 +76,7 @@ export default class App extends React.Component {
   
   editRoom(e, house, updatedRoom) {
     // Find the index of the room to be updated in the house's rooms array.
-    const roomIndex = house.rooms.findIndex((room) => room.id === updatedRoom.id);
+    const roomIndex = house.rooms.findIndex((room) => room._id === updatedRoom._id);
   
     // If the room was found, update it with the new data.
     if (roomIndex !== -1) {

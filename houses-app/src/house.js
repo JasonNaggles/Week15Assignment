@@ -1,6 +1,6 @@
 import React from 'react';
 import NewRoomForm from './new-room-form';
-import EditRoom from './editroom';
+
 export default class House extends React.Component {
   render() {
     const rooms = this.props.data.rooms 
@@ -11,7 +11,7 @@ export default class House extends React.Component {
          this.props.deleteRoom(e, this.props.data, room)}>
         Delete
          </button>
-    </li>)
+</li>)
     : null;
             return (
                 <div>
@@ -21,7 +21,6 @@ export default class House extends React.Component {
                     </ul>
                     <NewRoomForm 
                     addNewRoom={this.props.addNewRoom} data={this.props.data} />
-                    <EditRoom />
                 </div>
             );
   }
