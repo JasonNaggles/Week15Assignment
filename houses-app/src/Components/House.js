@@ -11,4 +11,28 @@ export const House = (props) => {
         };
         updateHouse(updateHouse);
     }
+
+    const addNewRoom = (room) => updateHouse({ ...house, rooms: [...house.rooms, room]});
+
+    const rooms = () => (
+        <ul>
+            {house.rooms.map((room, index) => (
+                <li key={index}>
+                <label> {`${room.name} Area: ${room.area}`}</label>
+                <button onClick={(e) => deleteRoom(room._id)}>Delete</button>
+                </li>
+            ))}
+        </ul>
+    );
+
+    return (
+        <div>
+            <h1>{house.name}</h1>
+            {
+                rooms({ rooms, houseId: house.id, deleteRoom})
+            }
+            <NewRoomForm addNewRoom={addNewRoom} />
+        </div>
+    );
+
 };
