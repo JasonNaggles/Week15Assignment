@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class EditRoom extends Component {
+export default class EditRoom extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -89,4 +89,3 @@ class EditRoom extends Component {
   }
 }
 
-export default EditRoom;
