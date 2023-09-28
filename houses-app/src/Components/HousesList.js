@@ -1,6 +1,6 @@
 import React from 'react';
 import { House } from './House';
-import { houseApi } from './rest/HousesApi.js';
+import { housesApi } from '../rest/HousesApi';
 
 export class HousesList extends React.Component {
     state = {
@@ -12,7 +12,7 @@ export class HousesList extends React.Component {
     }
 
     fetchHouses = async () => {
-        const houses = await houseApi.get();
+        const houses = await housesApi.get();
         this.setState({ houses });
     };
 
