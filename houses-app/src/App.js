@@ -82,31 +82,27 @@ export default class App extends React.Component {
     if (roomIndex !== -1) {
       house.rooms[roomIndex] = updatedRoom;
   
-      // Send a PUT request to update the house's data on the server.
-      updateHouse(house)
-        .then(() => {
-          this.setState((state) => {
-            // Find the house in the state and update it.
-            const updatedHouses = state.houses.map((h) => {
-              if (h._id === house._id) {
-                return house;
-              } else {
-                return h;
-              }
-            });
+      updateRoom(updatedRoom)
+      .then((response) => {
+        if (response.ok) {
+          // Handle the successful response from the server.
+          console.log('Room updated successfully:', updatedRoom);
           
-            return {
-              houses: updatedHouses,
-            };
-          });
-        });
-      
-      };
-  
-  
-    e.preventDefault();
-    
+          // Optionally, you can update the state with the updated room data if needed.
+          // For now, we're not updating the state here, but you can add this logic.
+        } else {
+          // Handle server errors here if necessary.
+          console.error('Error updating room:', response.statusText);
+        }
+      })
+      .catch((error) => {
+        // Handle network errors here.
+        console.error('Network error:', error);
+      });
   }
+
+  e.preventDefault();
+}
 }
 
 
@@ -119,5 +115,15 @@ function updateHouse(house) {
       'content-type': 'application/json'
     },
     body: JSON.stringify(house)
+  });
+}
+
+function updateRoom(updatedRoom) {
+  return fetch(`${HOUSE_ENDPOINT}/${updatedRoom._id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updatedRoom),
   });
 }
