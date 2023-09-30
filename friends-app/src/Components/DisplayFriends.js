@@ -27,20 +27,21 @@ export default function DisplayFriends() {
         setFriends(data)
         console.log(data)
       })
-
-
   }
+
+  const onUpdate = (friendId) => {
+    UpdateFriend(friendId);
+  };
+
+  const onDelete = (friendId) => {
+    DeleteFriend(friendId);
+  };
 
 
       return (
         <div>
           <h1>Friends List</h1>
-          <NewFriendForm onSubmit={selectedFriend ? updateFriend : addFriend} />
-          <FriendsList
-            friends={friends}
-            onDelete={deleteFriend}
-            onEdit={editFriend}
-          />
+      
         </div>
       );
     }
