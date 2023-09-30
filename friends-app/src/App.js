@@ -6,7 +6,7 @@ import './App.css';
 function App() {
 
   // Define state variables using the 'useState' hook.
-  const [friends, setFriends] = useState(friendsData); // Initialize the friends list with mock data.
+  const [friends, setFriends] = useState(); // Initialize the friends list with mock data.
   const [selectedFriend, setSelectedFriend] = useState(null); // Initialize selectedFriend as null.
 
 // Function to add a new friend to the list.
