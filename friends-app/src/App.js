@@ -1,3 +1,4 @@
+import React from 'react';
 import DisplayFriends from './Components/DisplayFriends';
 import AddFriends from './Components/AddFriends';
 import UpdateFriends from './Components/UpdateFriends'
@@ -10,10 +11,10 @@ export default function App() {
       <div>
         <DisplayFriends />
         <AddFriends />
-        <UpdateFriends friendId={friends.id} getFriends={getFriends} onUpdate={onUpdate}/>
+        <UpdateFriends />
         <DeleteFriends />
       </div>
-    
+
     </>
 );
 
