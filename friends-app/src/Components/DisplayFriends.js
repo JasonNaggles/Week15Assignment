@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import UpdateFriends from './Components/UpdateFriends';
-import DeleteFriends from './Components/DeleteFriends'
+import DeleteFriends from './Components/DeleteFriends';
 
 export default function DisplayFriends() {
     
