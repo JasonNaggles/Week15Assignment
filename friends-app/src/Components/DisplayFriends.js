@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import FriendsList from './Components/FriendsList';
-import NewFriendForm from './Components/NewFriendForm';
-import DisplayFriends from './Components/DisplayFriends';
+import UpdateFriends from './Components/UpdateFriends';
+import DeleteFriends from './Components/DeleteFriends';
+
 
 
 
@@ -30,19 +30,28 @@ export default function DisplayFriends() {
   }
 
   const onUpdate = (friendId) => {
-    UpdateFriend(friendId);
+    UpdateFriends(friendId);
   };
 
   const onDelete = (friendId) => {
-    DeleteFriend(friendId);
+    DeleteFriends(friendId);
   };
 
 
       return (
         <div>
-          <h1>Friends List</h1>
-      
+          <div>
+          <h1 className="text-center">Friends List</h1>
+          <addFriends getFriends={getFriends} />
+          </div>
+          <div className="displayFriends text-center">
+            {friends.map((friends, index) => (
+            <>
+          <UpdateFriends friendId={friends.id} getFriends={getFriends} onUpdate={onUpdate} />
+          <DeleteFriends friendId={friends.id} getFriends={getFriends} onDelete={onDelete} />
+          </>
+            ))}
+          </div>
         </div>
-      );
-    }
-
+      )
+     }
