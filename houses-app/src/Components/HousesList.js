@@ -17,6 +17,7 @@ export class HousesList extends React.Component {
     };
 
     updateHouse = async (updatedHouse) => {
+        console.log(updatedHouse)
         await housesApi.put(updatedHouse);
         this.fetchHouses();
     };

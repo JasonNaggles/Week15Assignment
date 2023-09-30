@@ -4,12 +4,15 @@ import { NewRoomForm } from './NewRoomForm';
 export const House = (props) => {
     const { house, updateHouse } = props;
 
-    const deleteRoom = (roomId) => {
-        const updateHouse = {
+
+    const deleteRoom = (e, room) => {
+        e.preventDefault();
+        const updatedHouse = {
             ...house,
-            rooms: house.rooms.filter((x) => x._id !== roomId)
+            rooms: house.rooms.filter((x) => x._id !== room._id)
         };
-        updateHouse(updateHouse);
+
+        updateHouse(updatedHouse);
     }
 
     const addNewRoom = (room) => updateHouse({ ...house, rooms: [...house.rooms, room]});
@@ -19,7 +22,7 @@ export const House = (props) => {
             {house.rooms.map((room, index) => (
                 <li key={index}>
                 <label> {`${room.name} Area: ${room.area}`}</label>
-                <button onClick={(e) => deleteRoom(room._id)}>Delete</button>
+                <button onClick={(e) => deleteRoom(e, room)}>Delete</button>
                 </li>
             ))}
         </ul>
