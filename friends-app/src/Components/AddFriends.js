@@ -10,7 +10,7 @@ const [newLastName, setNewLastName] = useState('')
 
 
 const AddFriends = () => {
-    
+
     fetch(API_URL, {
         method: 'POST',
         headers: 

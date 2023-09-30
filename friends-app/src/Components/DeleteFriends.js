@@ -14,7 +14,7 @@ const deleteFriends = () => {
 
 return (
     <div className="text-center"> 
-        <button type="button" onClick= {deleteFriends}> Delete Friends </button>
+        <button type="button" onClick={deleteFriends}> Delete Friends </button>
     </div>
 );
 }
