@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react';
 
 function App() {
   
-const MOCK_API_URL = "https://650fc3383ce5d181df5ca880.mockapi.io/Friends"  
+const MOCK_API_URL = "https://650fc3383ce5d181df5ca880.mockapi.io/Friends";  
   
 const [newFirstName, setNewFirstName] = useState('')
 const [newLastName, setNewLastName] = useState('')
-const [friends, setFriends] = useState('')
+const [friends, setFriends] = useState([])
 const [updatedFirstName, setUpdatedFirstName] = useState('')
 const [updatedLastName, setUpdatedLastName] = useState('')
 
@@ -37,7 +37,6 @@ function postNewFriends() {
       lastName: newLastName,
     })
   }).then(() => getFriends())
-  }
 }
 
 function updateFriends(friendsObject) {
@@ -54,32 +53,39 @@ function updateFriends(friendsObject) {
       "Content-Type": "application/json"},
     }).then(() => getFriends())
 
-
-
-
+  }
 
     return (
     <div className="App">
     <form>
       <h3>Post new friends form</h3>
       <label>First Name</label>
-      <input onChange={(e) => setUpdatedFirstName(e.target.value)}></input>
+      <input onChange={(e) => setNewFirstName(e.target.value)}></input>
       <label>Last Name</label>
-      <input onChange={(e) => setUpdatedLastName(e.target.value)}></input>
+      <input onChange={(e) => setNewLastName(e.target.value)}></input>
+      <button onClick={postNewFriends}>Submit</button>
     </form>
       {friends.map((friends, index) => (
         <div key={index}>
           <div>
-            firstName: {friends.firstName}
-            lastName: {friends.lastName}
-            <button onClick={() => deleteFriends(friends.id)}></button>
+            firstName: {friends.firstName} <br></br>
+            lastName: {friends.lastName} <br></br>
+            <button onClick={() => deleteFriends(friends.id)}>Delete</button>
           </div>
+          <form>
+          <label>Update First Name</label>
+          <input onChange={(e) => setUpdatedFirstName(e.target.value)}></input>
+          <label>Update Last Name</label>
+          <input onChange={(e) => setUpdatedLastName(e.target.value)}></input>
+          <button onClick={() => updateFriends(friends.id)}>Update</button>
+          </form>
         </div>
        ))}
        </div>
     )
     
 }
+
 
 
 export default App;
