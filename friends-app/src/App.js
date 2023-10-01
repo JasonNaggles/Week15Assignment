@@ -28,7 +28,8 @@ function deleteFriends(id) {
   }).then(() => getFriends())
 }
 
-function postNewFriends() {
+function postNewFriends(e) {
+  e.preventDefault()
   fetch(MOCK_API_URL, {
     method: 'POST',
     headers: {"Content-Type": "application/json"},
@@ -39,8 +40,8 @@ function postNewFriends() {
   }).then(() => getFriends())
 }
 
-function updateFriends(friendsObject) {
-
+function updateFriends(e, friendsObject) {
+  e.preventDefault()
   let updatedFriendsObject = {
     ...friendsObject,
     firstName: updatedFirstName,
@@ -57,16 +58,16 @@ function updateFriends(friendsObject) {
 
     return (
     <div className="App">
-    <form>
+    <form bgcolor="blue">
       <h3>Post new friends form</h3>
       <label>First Name</label>
       <input onChange={(e) => setNewFirstName(e.target.value)}></input>
       <label>Last Name</label>
       <input onChange={(e) => setNewLastName(e.target.value)}></input>
-      <button onClick={postNewFriends}>Submit</button>
+      <button onClick={(e) => postNewFriends(e)}>Submit</button>
     </form>
       {friends.map((friends, index) => (
-        <div key={index}>
+        <div className="friendsContainer" key={index}>
           <div>
             firstName: {friends.firstName} <br></br>
             lastName: {friends.lastName} <br></br>
@@ -77,7 +78,7 @@ function updateFriends(friendsObject) {
           <input onChange={(e) => setUpdatedFirstName(e.target.value)}></input>
           <label>Update Last Name</label>
           <input onChange={(e) => setUpdatedLastName(e.target.value)}></input>
-          <button onClick={() => updateFriends(friends.id)}>Update</button>
+          <button onClick={(e) => updateFriends(e, friends)}>Update</button>
           </form>
         </div>
        ))}
