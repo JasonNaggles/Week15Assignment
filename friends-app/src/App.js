@@ -58,7 +58,7 @@ function updateFriends(e, friendsObject) {
 
     return (
     <div className="App">
-    <form bgcolor="blue">
+    <form>
       <h3>Post new friends form</h3>
       <label>First Name</label>
       <input onChange={(e) => setNewFirstName(e.target.value)}></input>
